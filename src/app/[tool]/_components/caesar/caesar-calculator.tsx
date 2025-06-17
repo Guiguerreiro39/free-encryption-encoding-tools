@@ -18,7 +18,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Copy, Lock, Unlock } from "lucide-react";
+import { Bomb, Copy, Lock, Unlock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
@@ -193,7 +193,7 @@ export const CaesarCalculator = () => {
                 value="brute-force"
                 className="flex-1"
               >
-                <Unlock className="mr-2 h-4 w-4" />
+                <Bomb className="mr-2 h-4 w-4" />
                 Brute Force
               </Button>
             </div>
