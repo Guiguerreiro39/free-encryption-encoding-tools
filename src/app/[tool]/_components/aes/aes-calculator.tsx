@@ -103,6 +103,7 @@ export const AESCalculator = () => {
       console.error(error);
       if (error instanceof Error) {
         toast.error(error.message);
+        setOutputText("");
       }
     }
   };
@@ -123,6 +124,7 @@ export const AESCalculator = () => {
       console.error(error);
       if (error instanceof Error) {
         toast.error(error.message);
+        setOutputText("");
       }
     }
   };

@@ -57,6 +57,7 @@ export const CaesarCalculator = () => {
     } catch (error) {
       console.error(error);
       toast.error("Failed to encrypt text");
+      setOutputText("");
     }
   };
 
@@ -70,6 +71,7 @@ export const CaesarCalculator = () => {
     } catch (error) {
       console.error(error);
       toast.error("Failed to decrypt text");
+      setOutputText("");
     }
   };
 
@@ -82,6 +84,7 @@ export const CaesarCalculator = () => {
     } catch (error) {
       console.error(error);
       toast.error("Failed to brute force text");
+      setOutputText("");
     }
   };
 
@@ -138,7 +141,7 @@ export const CaesarCalculator = () => {
                 <div className="relative">
                   <Textarea
                     value={outputText}
-                    placeholder="Decoded/encoded text will appear here..."
+                    placeholder="Encrypted, decrypted or brute forced text will appear here..."
                     readOnly
                     className="h-32"
                   />

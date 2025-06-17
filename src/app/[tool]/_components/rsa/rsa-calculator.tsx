@@ -60,6 +60,7 @@ export const RSACalculator = () => {
       toast.error(
         "Failed to encrypt text. Ensure you have the correct key pairs."
       );
+      setOutputText("");
     }
   };
 
@@ -75,6 +76,7 @@ export const RSACalculator = () => {
       toast.error(
         "Failed to decrypt text. Ensure you have the correct key pairs."
       );
+      setOutputText("");
     }
   };
 
@@ -87,6 +89,8 @@ export const RSACalculator = () => {
     } catch (error) {
       console.error(error);
       toast.error("Failed to generate keys");
+      form.setValue("publicKey", "");
+      form.setValue("privateKey", "");
     }
   };
 

@@ -17,13 +17,13 @@ export default async function ToolPage({
 }: {
   params: { tool: string };
 }) {
-  if (
-    !AVAILABLE_TOOLS.includes(params.tool as (typeof AVAILABLE_TOOLS)[number])
-  ) {
+  const { tool } = await params;
+
+  if (!AVAILABLE_TOOLS.includes(tool as (typeof AVAILABLE_TOOLS)[number])) {
     notFound();
   }
 
-  switch (params.tool) {
+  switch (tool) {
     case "aes":
       return (
         <>

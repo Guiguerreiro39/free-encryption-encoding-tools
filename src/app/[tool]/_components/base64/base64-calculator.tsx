@@ -48,6 +48,7 @@ export const Base64Calculator = () => {
     } catch (error) {
       console.error(error);
       toast.error("Failed to encode text");
+      setOutputText("");
     }
   };
 
@@ -58,6 +59,7 @@ export const Base64Calculator = () => {
     } catch (error) {
       console.error(error);
       toast.error("Failed to decode text");
+      setOutputText("");
     }
   };
 

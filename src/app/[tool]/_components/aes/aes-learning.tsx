@@ -1,5 +1,12 @@
 "use static";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { AccordionItem } from "@radix-ui/react-accordion";
+
 export const AESLearning = () => {
   return (
     <article className="space-y-4">
@@ -70,147 +77,166 @@ export const AESLearning = () => {
           messages, we use modes of operation. Each mode handles data
           differently and is suited for different use cases.
         </p>
-        <ol className="list-decimal list-inside text-sm space-y-4">
-          <div>
-            <li className="font-semibold mb-2">ECB (Electronic Codebook)</li>
-            <p className="text-sm text-muted-foreground mb-2.5">
-              <strong className="font-medium">How it works:</strong> Each block
-              of plaintext is encrypted independently using the same key.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Pros:</strong>
+        <Accordion collapsible type="single">
+          <ol className="list-decimal list-inside text-sm">
+            <AccordionItem value="ecb">
+              <AccordionTrigger>
+                <li className="font-semibold">ECB (Electronic Codebook)</li>
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="text-sm text-muted-foreground mb-2.5">
+                  <strong className="font-medium">How it works:</strong> Each
+                  block of plaintext is encrypted independently using the same
+                  key.
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>Simple and fast.</li>
-                  <li>Parallelizable.</li>
-                </ul>
-              </div>
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Cons:</strong>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Pros:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>Simple and fast.</li>
+                      <li>Parallelizable.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Cons:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>
+                        Not secure for most uses — identical plaintext blocks
+                        produce identical ciphertext blocks.
+                      </li>
+                      <li>
+                        Leaks patterns (e.g., images remain recognizable when
+                        encrypted).
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  <strong className="font-medium">Best for:</strong> Rarely
+                  recommended—only for encrypting short, random data.
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>
-                    Not secure for most uses — identical plaintext blocks
-                    produce identical ciphertext blocks.
-                  </li>
-                  <li>
-                    Leaks patterns (e.g., images remain recognizable when
-                    encrypted).
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              <strong className="font-medium">Best for:</strong> Rarely
-              recommended—only for encrypting short, random data.
-            </p>
-          </div>
-          <div>
-            <li className="font-semibold mb-2">CBC (Cipher Block Chaining)</li>
-            <p className="text-sm text-muted-foreground mb-2.5">
-              <strong className="font-medium">How it works:</strong> Each
-              plaintext block is XORed with the previous ciphertext block before
-              encryption. Uses an Initialization Vector (IV) for the first
-              block.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Pros:</strong>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="cbc">
+              <AccordionTrigger>
+                <li className="font-semibold">CBC (Cipher Block Chaining)</li>
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="text-sm text-muted-foreground mb-2.5">
+                  <strong className="font-medium">How it works:</strong> Each
+                  plaintext block is XORed with the previous ciphertext block
+                  before encryption. Uses an Initialization Vector (IV) for the
+                  first block.
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>Hides patterns in data.</li>
-                  <li>More secure than ECB.</li>
-                </ul>
-              </div>
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Cons:</strong>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Pros:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>Hides patterns in data.</li>
+                      <li>More secure than ECB.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Cons:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>Slower: blocks must be processed sequentially.</li>
+                      <li>If one block is corrupted, it affects the next.</li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  <strong className="font-medium">Best for:</strong> File
+                  encryption, secure data storage.
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>Slower: blocks must be processed sequentially.</li>
-                  <li>If one block is corrupted, it affects the next.</li>
-                </ul>
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              <strong className="font-medium">Best for:</strong> File
-              encryption, secure data storage.
-            </p>
-          </div>
-          <div>
-            <li className="font-semibold mb-2">CTR (Counter Mode)</li>
-            <p className="text-sm text-muted-foreground mb-2.5">
-              <strong className="font-medium">How it works:</strong> Turns AES
-              into a stream cipher. Encrypts a counter value and XORs it with
-              the plaintext.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Pros:</strong>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="ctr">
+              <AccordionTrigger>
+                <li className="font-semibold">CTR (Counter Mode)</li>
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="text-sm text-muted-foreground mb-2.5">
+                  <strong className="font-medium">How it works:</strong> Turns
+                  AES into a stream cipher. Encrypts a counter value and XORs it
+                  with the plaintext.
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>Fast and parallelizable.</li>
-                  <li>Allows random access to encrypted data.</li>
-                </ul>
-              </div>
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Cons:</strong>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Pros:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>Fast and parallelizable.</li>
+                      <li>Allows random access to encrypted data.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Cons:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>
+                        Requires unique counter values; reuse breaks security.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  <strong className="font-medium">Best for:</strong>{" "}
+                  High-performance applications, disk encryption.
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>
-                    Requires unique counter values; reuse breaks security.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              <strong className="font-medium">Best for:</strong>{" "}
-              High-performance applications, disk encryption.
-            </p>
-          </div>
-          <div>
-            <li className="font-semibold mb-2">GCM (Galois/Counter Mode)</li>
-            <p className="text-sm text-muted-foreground mb-2.5">
-              <strong className="font-medium">How it works:</strong> Combines
-              CTR mode with authentication (provides data integrity). Encrypts
-              using counters and adds a tag to ensure the message wasn&apos;t
-              tampered with.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Pros:</strong>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="gcm">
+              <AccordionTrigger>
+                <li className="font-semibold">GCM (Galois/Counter Mode)</li>
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="text-sm text-muted-foreground mb-2.5">
+                  <strong className="font-medium">How it works:</strong>{" "}
+                  Combines CTR mode with authentication (provides data
+                  integrity). Encrypts using counters and adds a tag to ensure
+                  the message wasn&apos;t tampered with.
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>Fast and secure.</li>
-                  <li>
-                    Authenticated encryption (confidentiality + integrity).
-                  </li>
-                  <li>Widely used in TLS, HTTPS, and VPNs.</li>
-                </ul>
-              </div>
-              <div>
-                <p className="text-muted-foreground">
-                  <strong className="font-medium">Cons:</strong>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Pros:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>Fast and secure.</li>
+                      <li>
+                        Authenticated encryption (confidentiality + integrity).
+                      </li>
+                      <li>Widely used in TLS, HTTPS, and VPNs.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-muted-foreground">
+                      <strong className="font-medium">Cons:</strong>
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
+                      <li>More complex than ECB or CBC.</li>
+                      <li>Must use a unique IV for every message.</li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  <strong className="font-medium">Best for:</strong> Secure
+                  communications (websites, APIs, messaging).
                 </p>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 my-2.5">
-                  <li>More complex than ECB or CBC.</li>
-                  <li>Must use a unique IV for every message.</li>
-                </ul>
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              <strong className="font-medium">Best for:</strong> Secure
-              communications (websites, APIs, messaging).
-            </p>
-          </div>
-        </ol>
+              </AccordionContent>
+            </AccordionItem>
+          </ol>
+        </Accordion>
       </section>
       <section>
         <h5 className="font-semibold mb-4">AES Mode Comparison Table</h5>
