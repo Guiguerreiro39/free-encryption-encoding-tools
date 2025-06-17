@@ -41,13 +41,13 @@ export const BASE64_TOOL = {
 
 export const TOOL_INFO = [
   {
-    title: "Encryption Algorithms",
+    title: "Encryption",
     description:
       "Secure information using modern cryptographic algorithms. They convert readable text into coded formats using cryptographic methods, helping protect sensitive information from unauthorized access.",
     tools: [AES_TOOL, RSA_TOOL, CAESAR_TOOL],
   },
   {
-    title: "Encoding Algorithms",
+    title: "Encoding",
     description:
       "Convert text into different formats with ease using our encoding tools. Encoding makes your text compatible for sharing, storage, or web use, without changing its original meaning.",
     tools: [BASE64_TOOL],
