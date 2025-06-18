@@ -17,7 +17,7 @@ import { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: {
-  params: { tool: string };
+  params: Promise<{ tool: string }>;
 }): Promise<Metadata> {
   const { tool } = await params;
 
