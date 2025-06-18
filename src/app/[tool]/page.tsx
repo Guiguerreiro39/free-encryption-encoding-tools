@@ -13,6 +13,8 @@ import { CaesarLearning } from "./_components/caesar/caesar-learning";
 import { Base64Learning } from "./_components/base64/base64-learning";
 import { Metadata } from "next";
 
+export const runtime = "edge";
+
 // Generate metadata for each tool page
 export async function generateMetadata({
   params,
