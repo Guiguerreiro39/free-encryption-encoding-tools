@@ -7,8 +7,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export const runtime = "edge";
-
 export default function EncryptionSecurityFAQ() {
   return (
     <section>

@@ -10,8 +10,6 @@ import Link from "next/link";
 import { TypographyH2 } from "@/components/ui/typography-h2";
 import { TypographyP } from "@/components/ui/typography-p";
 
-export const runtime = "edge";
-
 export const metadata = {
   title: "Cryptographic Tools - Free Online Encryption & Encoding Tools",
   description:
