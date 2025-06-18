@@ -119,7 +119,7 @@ export async function generateMetadata({
 export default async function ToolPage({
   params,
 }: {
-  params: { tool: string };
+  params: Promise<{ tool: string }>;
 }) {
   const { tool } = await params;
 
