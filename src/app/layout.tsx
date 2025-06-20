@@ -5,7 +5,16 @@ import { Toaster } from "@/components/ui/sonner";
 import { AdSpace } from "@/components/ad-space";
 import { Badge } from "@/components/ui/badge";
 import { AppSidebar } from "@/app/_components/app-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  ANALYTICS_CONFIG,
+  generateStructuredData,
+  ICONS,
+  OPEN_GRAPH,
+  ROBOTS_CONFIG,
+  SITE_CONFIG,
+  TWITTER_CONFIG,
+} from "@/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,183 +31,76 @@ const geistMono = Geist_Mono({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: "#ffffff",
+  maximumScale: 1,
+  themeColor: "#b98771",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cryptotools.example.com"),
+  metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default:
-      "Free Online Text Encryption Tools - AES, RSA, Base64 Encoder & Cipher Decoder",
-    template: "%s | CryptoTools - Free Online Encryption & Decoding",
+    default: SITE_CONFIG.title.default,
+    template: SITE_CONFIG.title.template,
   },
-  description:
-    "Free online text encryption, decryption, encoding and decoding tools. Secure AES encryption, RSA cipher, Base64 encoder/decoder, Caesar cipher solver, and password protection tools. No registration required.",
+  description: SITE_CONFIG.description.default,
   keywords: [
-    // Primary encryption keywords
     "online text encryption",
-    "text encryption online",
     "encrypt text online free",
-    "online encryption tool",
-    "text encryptor",
-    "encrypt decrypt text",
-    "password protect text",
-    "secure text encryption",
-
-    // AES specific
     "AES encryption online",
-    "AES encryption tool",
-    "AES encrypt decrypt",
-    "advanced encryption standard",
-
-    // RSA specific
-    "RSA encryption online",
-    "RSA cipher tool",
-    "public key encryption",
-    "RSA encrypt decrypt",
-    "RSA key generator",
-
-    // Base64 & encoding
-    "Base64 encode decode",
-    "Base64 encoder online",
-    "Base64 decoder tool",
-    "text to Base64",
-    "Base64 converter",
-    "encode decode text",
-    "text encoding tools",
-
-    // Caesar cipher
+    "RSA encryption tool",
+    "Base64 encoder decoder",
     "Caesar cipher solver",
-    "Caesar cipher decoder",
-    "shift cipher tool",
-    "cipher decoder online",
-    "classical cipher tools",
-    "cipher solver",
-
-    // General crypto terms
-    "cryptography tools",
-    "cipher tools online",
-    "crypto calculator",
-    "message encryption",
-    "data encryption tools",
-    "online crypto tools",
-    "cryptographic calculator",
-    "security tools online",
-    "privacy tools",
-
-    // Long-tail keywords
-    "how to encrypt text online",
-    "free encryption software online",
-    "browser based encryption",
-    "client side encryption",
-    "no download encryption tool",
-    "instant text encryption",
-    "military grade encryption online",
-    "secure message encryption",
+    "free encryption tools",
+    "secure text encryption",
+    "military grade encryption",
+    "zero knowledge encryption",
   ],
-  authors: [
-    { name: "CryptoTools Team", url: "https://cryptotools.example.com" },
-  ],
-  creator: "CryptoTools",
-  publisher: "CryptoTools",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  authors: [{ name: SITE_CONFIG.creator }],
+  creator: SITE_CONFIG.creator,
+  publisher: SITE_CONFIG.publisher,
+  category: "Security",
+  classification: "Cryptography Tools",
+  robots: ROBOTS_CONFIG,
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://cryptotools.example.com",
-    title:
-      "Free Online Text Encryption Tools - AES, RSA, Base64 & Cipher Decoder",
-    description:
-      "Professional-grade online encryption tools. Encrypt, decrypt, encode and decode text with AES, RSA, Base64, Caesar cipher and more. Secure, fast and browser-based - no download required.",
-    siteName: "CryptoTools - Free Online Encryption",
+    type: OPEN_GRAPH.type,
+    locale: OPEN_GRAPH.locale,
+    url: SITE_CONFIG.url,
+    title: SITE_CONFIG.title.default,
+    description: SITE_CONFIG.description.openGraph,
+    siteName: OPEN_GRAPH.siteName,
     images: [
       {
-        url: "https://cryptotools.example.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "CryptoTools - Free Online Text Encryption and Decoding Tools",
+        url: OPEN_GRAPH.image.url,
+        width: OPEN_GRAPH.image.width,
+        height: OPEN_GRAPH.image.height,
+        alt: OPEN_GRAPH.image.alt,
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Free Online Text Encryption Tools - Secure AES, RSA & Base64",
-    description:
-      "Encrypt, decrypt, encode & decode text online. Professional AES, RSA encryption, Base64 converter, Caesar cipher solver. Free, secure, no registration.",
-    images: ["https://cryptotools.example.com/twitter-image.jpg"],
-    creator: "@cryptotools",
+    card: TWITTER_CONFIG.card,
+    creator: TWITTER_CONFIG.creator,
+    title: SITE_CONFIG.title.default,
+    description: SITE_CONFIG.description.twitter,
+    images: [OPEN_GRAPH.image.url],
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
+  icons: ICONS,
   manifest: "/site.webmanifest",
-  alternates: {
-    canonical: "https://cryptotools.example.com",
+  verification: {
+    google: ANALYTICS_CONFIG.searchConsole.siteVerification,
+    other: {
+      "msvalidate.01": ANALYTICS_CONFIG.bingWebmaster.siteVerification,
+    },
   },
-  other: {
-    "google-site-verification": "your-google-verification-code",
+  alternates: {
+    canonical: SITE_CONFIG.url,
+    languages: {
+      en: "/",
+      "en-US": "/en-us",
+      "en-GB": "/en-gb",
+      "en-CA": "/en-ca",
+    },
   },
 };
-
-function addStructuredData() {
-  return {
-    __html: `{
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "CryptoTools - Free Online Encryption Tools",
-      "url": "https://cryptotools.example.com",
-      "description": "Free online tools for text encryption, decryption, encoding, and decoding. Supports AES, RSA, Base64, Caesar cipher and more cryptographic algorithms.",
-      "applicationCategory": "SecurityApplication",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "CryptoTools",
-        "url": "https://cryptotools.example.com"
-      },
-      "featureList": [
-        "AES Encryption and Decryption",
-        "RSA Public Key Encryption",
-        "Base64 Encoding and Decoding", 
-        "Caesar Cipher Solver",
-        "Text Encryption Tools",
-        "Secure Message Encryption",
-        "Password Protection Tools"
-      ],
-      "screenshot": "https://cryptotools.example.com/screenshot.jpg",
-      "softwareVersion": "1.0",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1247"
-      }
-    }`,
-  };
-}
 
 export default function RootLayout({
   children,
@@ -208,12 +110,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        <meta name="theme-color" content="#ffffff" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateStructuredData()),
+          }}
+          key="structured-data"
+        />
+
+        <meta name="theme-color" content="#b98771" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="CryptoTools" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="apple-mobile-web-app-title" content="CipherToolbox" />
+        <meta name="msapplication-TileColor" content="#b98771" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
 
         {/* Additional SEO meta tags */}
@@ -224,6 +134,25 @@ export default function RootLayout({
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
 
+        {/* Performance Hints */}
+        <link
+          rel="preload"
+          href="/fonts/inter-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
+        {/* Security Headers via Meta Tags */}
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta
+          httpEquiv="Referrer-Policy"
+          content="strict-origin-when-cross-origin"
+        />
+
+        {/* DNS Prefetch */}
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -232,12 +161,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        <link rel="canonical" href="https://cryptotools.example.com" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={addStructuredData()}
-          key="structured-data"
-        />
+        <link rel="canonical" href="https://ciphertoolbox.com" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -245,26 +169,29 @@ export default function RootLayout({
         <SidebarProvider>
           <AppSidebar />
           <main className="min-h-screen space-y-8 w-full">
-            <header className="py-16 px-4 space-y-8 text-center bg-accent/20">
-              <div className="max-w-4xl mx-auto">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-primary bg-clip-text text-transparent">
-                  Free Online Encryption & Encoding Tools
-                </h1>
-                <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Professional-grade online encryption, decryption, encoding and
-                  decoding tools. Secure your text with AES encryption, RSA
-                  cipher, Base64 converter, Caesar cipher solver, and more. No
-                  download or registration required - all processing happens in
-                  your browser.
-                </p>
-              </div>
-              <div className="flex items-center justify-center gap-4">
-                <Badge variant="outline">AES</Badge>
-                <Badge variant="outline">RSA</Badge>
-                <Badge variant="outline">Base64</Badge>
-                <Badge variant="outline">Caesar Cipher</Badge>
-              </div>
-            </header>
+            <div>
+              <SidebarTrigger className="md:hidden size-10 absolute top-2 left-4" />
+              <header className="py-16 px-4 space-y-8 text-center bg-accent/20">
+                <div className="max-w-4xl mx-auto">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-primary bg-clip-text text-transparent">
+                    Free Online Encryption & Encoding Tools
+                  </h1>
+                  <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+                    Professional-grade online encryption, decryption, encoding
+                    and decoding tools. Secure your text with AES encryption,
+                    RSA cipher, Base64 converter, Caesar cipher solver, and
+                    more. No download or registration required - all processing
+                    happens in your browser.
+                  </p>
+                </div>
+                <div className="flex items-center justify-center gap-4">
+                  <Badge variant="outline">AES</Badge>
+                  <Badge variant="outline">RSA</Badge>
+                  <Badge variant="outline">Base64</Badge>
+                  <Badge variant="outline">Caesar Cipher</Badge>
+                </div>
+              </header>
+            </div>
             <div className="px-8 space-y-8">
               <AdSpace />
               {children}

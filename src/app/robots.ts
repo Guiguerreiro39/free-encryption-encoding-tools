@@ -34,8 +34,8 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/private/", "/admin/"],
       },
     ],
-    sitemap: "https://cryptotools.example.com/sitemap.xml",
+    sitemap: "https://ciphertoolbox.com/sitemap.xml",
     // Additional sitemaps for better indexing
-    host: "https://cryptotools.example.com",
+    host: "https://ciphertoolbox.com",
   };
 }
