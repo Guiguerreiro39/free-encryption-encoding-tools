@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { TOOL_INFO } from "@/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://cryptotools.example.com";
+  const baseUrl = "https://ciphertoolbox.com";
   const currentDate = new Date();
 
   // High-priority static routes with SEO-optimized frequencies

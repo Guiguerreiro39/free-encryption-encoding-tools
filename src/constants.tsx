@@ -1,3 +1,5 @@
+import { Code, Lock } from "lucide-react";
+
 export const ENCRYPTION_TOOLS = ["aes", "rsa", "caesar"] as const;
 
 export const ENCODING_TOOLS = ["base64"] as const;
@@ -42,12 +44,14 @@ export const BASE64_TOOL = {
 export const TOOL_INFO = [
   {
     title: "Encryption",
+    icon: <Lock />,
     description:
       "Secure information using modern cryptographic algorithms. They convert readable text into coded formats using cryptographic methods, helping protect sensitive information from unauthorized access.",
     tools: [AES_TOOL, RSA_TOOL, CAESAR_TOOL],
   },
   {
     title: "Encoding",
+    icon: <Code />,
     description:
       "Convert text into different formats with ease using our encoding tools. Encoding makes your text compatible for sharing, storage, or web use, without changing its original meaning.",
     tools: [BASE64_TOOL],

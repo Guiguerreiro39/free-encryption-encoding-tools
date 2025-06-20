@@ -46,27 +46,27 @@ export default function HomePage() {
       <article className="space-y-12 container mx-auto text-center">
         <section className="prose prose-slate dark:prose-invert max-w-none space-y-4">
           <TypographyH2>
-            Professional Online Text Encryption & Decoding Tools
+            Free Online Text Encryption & Decoding Tools
           </TypographyH2>
           <TypographyP>
-            Welcome to CipherToolBox, your comprehensive suite of free online
+            Welcome to Cipher Toolbox, your comprehensive suite of free online
             text encryption, decryption, hashing, encoding and decoding tools.
-            Whether you need to encrypt sensitive messages with military-grade
-            AES encryption, generate RSA key pairs for secure communication,
-            convert text to Base64 encoding, or solve classical Caesar ciphers,
-            our browser-based tools provide instant, secure results.
-          </TypographyP>
-          <TypographyP>
-            All encryption and decoding operations are performed locally in your
-            browser, ensuring your data never leaves your device. No
-            registration, no downloads, no data collection - just
-            professional-grade cryptographic tools at your fingertips.
+            Our browser-based tools provide instant, secure results. operations
+            are performed locally in your browser, ensuring your data never
+            leaves your device. No registration, no downloads, no data
+            collection - just professional-grade cryptographic tools at your
+            fingertips.
           </TypographyP>
         </section>
         {TOOL_INFO.map((category) => (
           <section key={category.title} className="space-y-6">
             <div className="space-y-2 prose prose-slate dark:prose-invert max-w-none">
-              <TypographyH2>{category.title}</TypographyH2>
+              <TypographyH2>
+                <div className="flex justify-center items-center gap-2">
+                  {category.icon}
+                  {category.title}
+                </div>
+              </TypographyH2>
               <TypographyP>{category.description}</TypographyP>
             </div>
 
@@ -75,14 +75,12 @@ export default function HomePage() {
                 <Link
                   href={tool.url}
                   key={tool.name}
-                  className="w-[20rem] transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
+                  className="sm:w-[20rem] w-[12rem] transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
                   aria-label={`Go to ${tool.name} tool: ${tool.description}`}
                 >
                   <Card className="h-full text-left hover:bg-accent/50 transition-colors">
                     <CardHeader>
-                      <CardTitle className="text-lg font-semibold">
-                        {tool.name}
-                      </CardTitle>
+                      <CardTitle>{tool.name}</CardTitle>
                       <CardDescription>{tool.description}</CardDescription>
                     </CardHeader>
                   </Card>
@@ -206,7 +204,7 @@ export default function HomePage() {
                 Supported Encryption Algorithms & Encoding Methods
               </TypographyH2>
               <TypographyP>
-                CryptoTools supports the most popular and secure encryption
+                CipherToolbox supports the most popular and secure encryption
                 algorithms and encoding methods used in modern cryptography:
               </TypographyP>
             </div>
@@ -214,7 +212,7 @@ export default function HomePage() {
             <div className="flex flex-wrap gap-6 justify-center text-start">
               <Card className="w-[20rem]">
                 <CardHeader>
-                  <CardTitle>🔐 Encryption Algorithms</CardTitle>
+                  <CardTitle>Encryption Algorithms</CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm">
                   <ul className="space-y-1">
@@ -228,7 +226,7 @@ export default function HomePage() {
 
               <Card className="w-[20rem]">
                 <CardHeader>
-                  <CardTitle>📝 Encoding Methods</CardTitle>
+                  <CardTitle>Encoding Methods</CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm">
                   <ul className="space-y-1">

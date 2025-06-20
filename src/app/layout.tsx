@@ -15,6 +15,7 @@ import {
   SITE_CONFIG,
   TWITTER_CONFIG,
 } from "@/seo";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -95,9 +96,6 @@ export const metadata: Metadata = {
     canonical: SITE_CONFIG.url,
     languages: {
       en: "/",
-      "en-US": "/en-us",
-      "en-GB": "/en-gb",
-      "en-CA": "/en-ca",
     },
   },
 };
@@ -109,7 +107,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <head>
+      <Head>
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9131623089140541"
+          crossOrigin="anonymous"
+        ></script>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -162,7 +167,7 @@ export default function RootLayout({
         />
 
         <link rel="canonical" href="https://ciphertoolbox.com" />
-      </head>
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -178,10 +183,8 @@ export default function RootLayout({
                   </h1>
                   <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                     Professional-grade online encryption, decryption, encoding
-                    and decoding tools. Secure your text with AES encryption,
-                    RSA cipher, Base64 converter, Caesar cipher solver, and
-                    more. No download or registration required - all processing
-                    happens in your browser.
+                    and decoding tools. No download or registration required -
+                    all processing happens in your browser.
                   </p>
                 </div>
                 <div className="flex items-center justify-center gap-4">
