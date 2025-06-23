@@ -268,28 +268,21 @@ export const SEO_KEYWORDS = {
 // Open Graph Configuration
 export const OPEN_GRAPH = {
   type: "website",
-  locale: "en_US",
   siteName: "CipherToolbox - Free Online Encryption",
-  image: {
-    url: "https://CipherToolbox.com/og-image.jpg",
-    width: 1200,
-    height: 630,
-    alt: "CipherToolbox - Free Online Text Encryption and Decoding Tools",
-  },
 } as const;
 
 // Twitter Configuration
 export const TWITTER_CONFIG = {
   card: "summary_large_image",
-  creator: "@CipherToolbox",
+  creator: "@ciphertoolbox",
 } as const;
 
 // Icons Configuration
 export const ICONS = {
   icon: "/favicon.ico",
-  shortcut: "/favicon-16x16.png",
-  apple: "/apple-touch-icon.png",
-  manifest: "/site.webmanifest",
+  shortcut: "/icon.png",
+  apple: "/apple-touch-icon-152x152.png",
+  manifest: "/manifest.webmanifest",
 } as const;
 
 // Robots Configuration
@@ -360,44 +353,6 @@ export const STRUCTURED_DATA = {
     areaServed: "Worldwide",
     availableLanguage: ["English"],
     category: "Computer Security",
-  },
-} as const;
-
-// Local SEO and International SEO
-export const GEO_SEO = {
-  // Primary markets
-  primaryMarkets: ["US", "CA", "GB", "AU", "DE", "FR", "NL", "JP"],
-
-  // Language targeting
-  languages: [
-    { code: "en", name: "English", region: "Global" },
-    { code: "en-US", name: "English", region: "United States" },
-    { code: "en-GB", name: "English", region: "United Kingdom" },
-    { code: "en-CA", name: "English", region: "Canada" },
-  ],
-
-  // Regional keywords (can be expanded)
-  regionalKeywords: {
-    "en-US": [
-      "encryption tools USA",
-      "American cryptography",
-      "US security tools",
-    ],
-    "en-GB": [
-      "encryption tools UK",
-      "British security software",
-      "UK privacy tools",
-    ],
-    "en-CA": [
-      "encryption tools Canada",
-      "Canadian security",
-      "CA privacy tools",
-    ],
-    "en-AU": [
-      "encryption tools Australia",
-      "Aussie security tools",
-      "AU privacy",
-    ],
   },
 } as const;
 
@@ -483,99 +438,6 @@ export const TOOL_CATEGORIES = {
   },
 } as const;
 
-// SEO Content Strategies
-export const SEO_CONTENT = {
-  // FAQ content for rich snippets
-  faqs: [
-    {
-      question: "What is the best free online text encryption tool?",
-      answer:
-        "CipherToolbox offers professional-grade AES and RSA encryption completely free, with no registration required and full client-side processing for maximum security.",
-    },
-    {
-      question: "Is online text encryption safe?",
-      answer:
-        "Yes, when using client-side encryption like CipherToolbox. Your data is encrypted in your browser and never sent to our servers, ensuring complete privacy.",
-    },
-    {
-      question: "What's the difference between AES and RSA encryption?",
-      answer:
-        "AES is symmetric encryption (same key for encrypt/decrypt), ideal for large amounts of data. RSA is asymmetric (public/private key pair), perfect for secure key exchange.",
-    },
-    {
-      question: "Can I use these encryption tools without creating an account?",
-      answer:
-        "Absolutely! CipherToolbox requires no registration, no email, and no personal information. Just visit and start encrypting your text immediately.",
-    },
-  ],
-
-  // Feature highlights for landing page
-  features: [
-    {
-      title: "Military-Grade AES Encryption",
-      description:
-        "256-bit AES encryption trusted by governments and enterprises worldwide",
-      benefits: ["NSA approved", "Quantum resistant", "Bank-level security"],
-    },
-    {
-      title: "RSA Public Key Encryption",
-      description: "Secure asymmetric encryption for sensitive communications",
-      benefits: [
-        "2048-bit keys",
-        "Perfect forward secrecy",
-        "Digital signatures",
-      ],
-    },
-    {
-      title: "Zero-Knowledge Architecture",
-      description:
-        "All encryption happens in your browser - we never see your data",
-      benefits: ["Client-side only", "No data storage", "Complete privacy"],
-    },
-    {
-      title: "No Registration Required",
-      description: "Start encrypting immediately without any signup process",
-      benefits: ["Anonymous usage", "No email required", "Instant access"],
-    },
-  ],
-
-  // Trust signals
-  trustSignals: [
-    "Used by 100,000+ professionals worldwide",
-    "Open source algorithms",
-    "FIPS 140-2 compliant encryption",
-    "Regular security audits",
-    "GDPR compliant",
-    "No data collection",
-    "Zero-knowledge encryption",
-    "Enterprise-grade security",
-  ],
-
-  // Use cases for content marketing
-  useCases: [
-    {
-      title: "Business Communications",
-      description: "Encrypt sensitive emails and messages before sending",
-      audience: "professionals, executives, consultants",
-    },
-    {
-      title: "Personal Privacy",
-      description: "Protect personal information and private conversations",
-      audience: "individuals, families, privacy advocates",
-    },
-    {
-      title: "Educational Purposes",
-      description: "Learn cryptography and understand encryption algorithms",
-      audience: "students, teachers, researchers",
-    },
-    {
-      title: "Developer Tools",
-      description: "Test encryption in applications and secure data processing",
-      audience: "developers, security engineers, DevOps",
-    },
-  ],
-} as const;
-
 // Technical SEO Configuration
 export const TECHNICAL_SEO = {
   // Core Web Vitals targets
@@ -642,85 +504,6 @@ export const PAGE_DESCRIPTIONS = {
   privacy: "Privacy Policy - Your Data Security Commitment",
   terms: "Terms of Service - Usage Guidelines",
   faq: "Frequently asked questions about encryption, encoding, hashing, cyber threats and attacks, and cyber security best practices. Get answers to common cryptography and cyber security questions.",
-} as const;
-
-// Content marketing pages for SEO
-export const CONTENT_PAGES = {
-  guides: [
-    {
-      slug: "aes-encryption-guide",
-      title: "Complete Guide to AES Encryption - How It Works & When to Use It",
-      description:
-        "Learn everything about AES encryption, from basic concepts to advanced implementation. Understand why AES is the gold standard for data security.",
-      keywords: [
-        "AES encryption guide",
-        "how AES works",
-        "AES tutorial",
-        "advanced encryption standard",
-      ],
-    },
-    {
-      slug: "rsa-vs-aes-comparison",
-      title: "RSA vs AES Encryption: Which Should You Choose in 2025?",
-      description:
-        "Comprehensive comparison of RSA and AES encryption algorithms. Learn the strengths, weaknesses, and best use cases for each.",
-      keywords: [
-        "RSA vs AES",
-        "encryption comparison",
-        "symmetric vs asymmetric",
-      ],
-    },
-    {
-      slug: "online-encryption-security",
-      title: "Is Online Encryption Safe? A Complete Security Analysis",
-      description:
-        "Discover the security of browser-based encryption tools and learn how to protect your data online safely.",
-      keywords: [
-        "online encryption safety",
-        "browser encryption security",
-        "client-side encryption",
-      ],
-    },
-  ],
-
-  tutorials: [
-    {
-      slug: "encrypt-text-step-by-step",
-      title: "How to Encrypt Text Online: Step-by-Step Tutorial for Beginners",
-      description:
-        "Complete beginner's guide to encrypting text online securely and privately.",
-      keywords: [
-        "how to encrypt text",
-        "text encryption tutorial",
-        "encryption for beginners",
-      ],
-    },
-    {
-      slug: "caesar-cipher-solver-guide",
-      title: "Caesar Cipher Solver: Decode Ancient Encryption Methods",
-      description:
-        "Learn to solve Caesar ciphers with our comprehensive guide and free online tool.",
-      keywords: [
-        "caesar cipher solver",
-        "decode caesar cipher",
-        "classical cryptography",
-      ],
-    },
-  ],
-
-  comparisons: [
-    {
-      slug: "best-free-encryption-tools-2025",
-      title: "10 Best Free Online Encryption Tools in 2025 (Tested & Reviewed)",
-      description:
-        "Comprehensive review of the top free encryption tools available online in 2025.",
-      keywords: [
-        "best free encryption tools",
-        "encryption tool comparison",
-        "free crypto tools 2025",
-      ],
-    },
-  ],
 } as const;
 
 // Helper function to generate page metadata

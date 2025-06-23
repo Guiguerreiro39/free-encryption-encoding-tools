@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { AdSpace } from "@/components/ad-space";
@@ -16,18 +15,6 @@ import {
   TWITTER_CONFIG,
 } from "@/seo";
 import Head from "next/head";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -63,26 +50,16 @@ export const metadata: Metadata = {
   robots: ROBOTS_CONFIG,
   openGraph: {
     type: OPEN_GRAPH.type,
-    locale: OPEN_GRAPH.locale,
     url: SITE_CONFIG.url,
     title: SITE_CONFIG.title.default,
     description: SITE_CONFIG.description.openGraph,
     siteName: OPEN_GRAPH.siteName,
-    images: [
-      {
-        url: OPEN_GRAPH.image.url,
-        width: OPEN_GRAPH.image.width,
-        height: OPEN_GRAPH.image.height,
-        alt: OPEN_GRAPH.image.alt,
-      },
-    ],
   },
   twitter: {
     card: TWITTER_CONFIG.card,
     creator: TWITTER_CONFIG.creator,
     title: SITE_CONFIG.title.default,
     description: SITE_CONFIG.description.twitter,
-    images: [OPEN_GRAPH.image.url],
   },
   icons: ICONS,
   manifest: "/site.webmanifest",
@@ -106,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en">
       <Head>
         {/* Google AdSense */}
         <script
@@ -129,7 +106,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="CipherToolbox" />
         <meta name="msapplication-TileColor" content="#b98771" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
 
         {/* Additional SEO meta tags */}
         <meta name="language" content="English" />
@@ -138,15 +114,6 @@ export default function RootLayout({
         <meta name="rating" content="general" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
-
-        {/* Performance Hints */}
-        <link
-          rel="preload"
-          href="/fonts/inter-var.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
 
         {/* Security Headers via Meta Tags */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
@@ -168,9 +135,7 @@ export default function RootLayout({
 
         <link rel="canonical" href="https://ciphertoolbox.com" />
       </Head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <SidebarProvider>
           <AppSidebar />
           <main className="min-h-screen space-y-8 w-full">
