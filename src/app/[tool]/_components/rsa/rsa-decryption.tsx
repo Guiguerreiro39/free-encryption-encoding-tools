@@ -24,7 +24,7 @@ const formSchema = z.object({
   inputText: z.string().min(1, "Input text is required"),
   publicKey: z.string(),
   privateKey: z.string(),
-  encoding: z.enum(["hex", "base64"]),
+  encoding: z.enum(["utf8", "base64"]),
 });
 
 export const RSADecryption = () => {
@@ -36,7 +36,7 @@ export const RSADecryption = () => {
       inputText: "",
       publicKey: "",
       privateKey: "",
-      encoding: "hex",
+      encoding: "utf8",
     },
   });
 
@@ -44,7 +44,7 @@ export const RSADecryption = () => {
     try {
       const decryptedText = await cryptoRouter.rsa.decrypt(data.inputText, {
         privateKey: data.privateKey,
-        encoding: data.encoding,
+        outputEncoding: data.encoding,
       });
       setOutputText(decryptedText);
     } catch (error) {
@@ -119,6 +119,7 @@ export const RSADecryption = () => {
               />
               {outputText && (
                 <Button
+                  type="button"
                   size="sm"
                   variant="outline"
                   className="absolute top-2 right-2"
@@ -134,15 +135,15 @@ export const RSADecryption = () => {
             name="encoding"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="mb-2">Encoding</FormLabel>
+                <FormLabel className="mb-2">Output Encoding</FormLabel>
                 <RadioGroup
                   defaultValue={field.value}
                   onValueChange={(value) => field.onChange(value)}
                   className="flex gap-4"
                 >
                   <div className="flex items-center gap-2">
-                    <RadioGroupItem value="hex" />
-                    <Label>Hex</Label>
+                    <RadioGroupItem value="utf8" />
+                    <Label>Plain text</Label>
                   </div>
                   <div className="flex items-center gap-2">
                     <RadioGroupItem value="base64" />

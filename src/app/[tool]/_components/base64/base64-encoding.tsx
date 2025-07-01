@@ -76,6 +76,7 @@ export const Base64Encoding = () => {
               {outputText && (
                 <Button
                   size="sm"
+                  type="button"
                   variant="outline"
                   className="absolute top-2 right-2"
                   onClick={() => copyToClipboard(outputText)}

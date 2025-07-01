@@ -44,7 +44,7 @@ export const RSAEncryption = () => {
     try {
       const encryptedText = await cryptoRouter.rsa.encrypt(data.inputText, {
         publicKey: data.publicKey,
-        encoding: data.encoding,
+        outputEncoding: data.encoding,
       });
       setOutputText(encryptedText);
     } catch (error) {
@@ -81,11 +81,24 @@ export const RSAEncryption = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Public Key</FormLabel>
-                  <Textarea
-                    placeholder="Enter public key..."
-                    className="h-40"
-                    {...field}
-                  />
+                  <div className="relative">
+                    <Textarea
+                      placeholder="Enter public key..."
+                      className="h-40"
+                      {...field}
+                    />
+                    {field.value && (
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        className="absolute top-2 right-6"
+                        onClick={() => copyToClipboard(field.value)}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    )}
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}
@@ -94,13 +107,26 @@ export const RSAEncryption = () => {
               control={form.control}
               name="privateKey"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="relative">
                   <FormLabel>Private Key</FormLabel>
-                  <Textarea
-                    placeholder="Enter private key..."
-                    className="h-40"
-                    {...field}
-                  />
+                  <div className="relative">
+                    <Textarea
+                      placeholder="Enter private key..."
+                      className="h-40"
+                      {...field}
+                    />
+                    {field.value && (
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        className="absolute top-2 right-6"
+                        onClick={() => copyToClipboard(field.value)}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    )}
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}
@@ -138,6 +164,7 @@ export const RSAEncryption = () => {
               />
               {outputText && (
                 <Button
+                  type="button"
                   size="sm"
                   variant="outline"
                   className="absolute top-2 right-2"
@@ -153,7 +180,7 @@ export const RSAEncryption = () => {
             name="encoding"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="mb-2">Encoding</FormLabel>
+                <FormLabel className="mb-2">Output Encoding</FormLabel>
                 <RadioGroup
                   defaultValue={field.value}
                   onValueChange={(value) => field.onChange(value)}

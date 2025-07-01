@@ -12,11 +12,10 @@ import {
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Bomb, Copy } from "lucide-react";
+import { Bomb } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
-import { copyToClipboard } from "@/lib/copy-to-clipboard";
 import { cryptoRouter } from "@/lib/crypto";
 import { toast } from "sonner";
 
@@ -75,16 +74,6 @@ export const CaesarBruteForce = () => {
                 readOnly
                 className="h-32"
               />
-              {outputText && (
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="absolute top-2 right-2"
-                  onClick={() => copyToClipboard(outputText)}
-                >
-                  <Copy className="h-4 w-4" />
-                </Button>
-              )}
             </div>
           </div>
         </div>

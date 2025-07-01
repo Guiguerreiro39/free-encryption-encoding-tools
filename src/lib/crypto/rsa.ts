@@ -1,4 +1,5 @@
 "use server";
+import { detectEncoding } from "@/lib/utils";
 import crypto from "crypto";
 
 type RSAKeyPair = {
@@ -8,12 +9,12 @@ type RSAKeyPair = {
 
 type RSAEncryptParams = {
   publicKey: string;
-  encoding?: "base64" | "hex";
+  outputEncoding?: "base64" | "hex";
 };
 
 type RSADecryptParams = {
   privateKey: string;
-  encoding?: "base64" | "hex";
+  outputEncoding?: "base64" | "utf8";
 };
 
 export const generateKeyPair = async (keySize = 2048): Promise<RSAKeyPair> => {
@@ -38,14 +39,16 @@ export const encrypt = async (
 ): Promise<string> => {
   const buffer = Buffer.from(input, "utf8");
   const encrypted = crypto.publicEncrypt(data.publicKey, buffer);
-  return encrypted.toString(data.encoding);
+  return encrypted.toString(data.outputEncoding);
 };
 
 export const decrypt = async (
   input: string,
   data: RSADecryptParams
 ): Promise<string> => {
-  const buffer = Buffer.from(input, data.encoding);
+  const inputEncoding = detectEncoding(input);
+
+  const buffer = Buffer.from(input, inputEncoding);
   const decrypted = crypto.privateDecrypt(data.privateKey, buffer);
-  return decrypted.toString("utf8");
+  return decrypted.toString(data.outputEncoding);
 };

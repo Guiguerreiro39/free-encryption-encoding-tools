@@ -247,6 +247,7 @@ export const AESEncryption = () => {
                 {output.encryptedText && (
                   <Button
                     size="sm"
+                    type="button"
                     variant="outline"
                     className="absolute top-2 right-2"
                     onClick={() => copyToClipboard(output.encryptedText)}
@@ -270,6 +271,7 @@ export const AESEncryption = () => {
                   {output.authTag && (
                     <Button
                       size="sm"
+                      type="button"
                       variant="outline"
                       className="absolute top-1 right-2"
                       onClick={() => copyToClipboard(output.authTag)}
