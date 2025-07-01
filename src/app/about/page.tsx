@@ -1,21 +1,19 @@
 import { TypographyH1 } from "@/components/ui/typography-h1";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Metadata } from "next";
-import { generatePageMetadata, SEO_KEYWORDS, SITE_CONFIG } from "@/seo";
 import { TypographyP } from "@/components/ui/typography-p";
 import Link from "next/link";
 import { TypographyH2 } from "@/components/ui/typography-h2";
+import { ABOUT_CONFIG } from "@/seo/about-config";
 
-export const metadata: Metadata = generatePageMetadata(
-  `About - ${SITE_CONFIG.title.default}`,
-  "Learn about our mission to provide secure and easy-to-use cryptographic tools for everyone.",
-  [...SEO_KEYWORDS.highIntent, "about us", "our mission", "cryptography tools"],
-  "/about"
-);
+export const metadata: Metadata = {
+  title: ABOUT_CONFIG.title,
+  description: ABOUT_CONFIG.description,
+};
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-12 space-y-12">
+    <article className="container mx-auto px-4 py-12 space-y-12">
       <div className="space-y-8">
         <section className="text-center space-y-4 max-w-3xl mx-auto">
           <TypographyH1>About Our Cryptographic Tools</TypographyH1>
@@ -87,6 +85,6 @@ export default function AboutPage() {
           to start using our cryptographic calculators.
         </TypographyP>
       </section>
-    </div>
+    </article>
   );
 }

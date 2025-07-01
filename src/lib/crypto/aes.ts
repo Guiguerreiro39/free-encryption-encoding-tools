@@ -1,36 +1,44 @@
 "use server";
+import { detectEncoding } from "@/lib/utils";
 import crypto from "crypto";
 
-type AESParams = {
+type AESEncryptionParams = {
   key: string;
   iv: string; // Required for CBC, GCM, CTR; not used for ECB
   keySize: 128 | 192 | 256;
   mode: "cbc" | "ecb" | "gcm" | "ctr";
   outputEncoding: "hex" | "base64";
-  authTag: string; // Only for GCM
+};
+
+type AESDecryptionParams = {
+  key: string;
+  iv: string; // Required for CBC, GCM, CTR; not used for ECB
+  keySize: 128 | 192 | 256;
+  mode: "cbc" | "ecb" | "gcm" | "ctr";
+  outputEncoding: "utf8" | "base64";
+  authTag: string;
+};
+
+const retrieveIv = (
+  mode: "cbc" | "ecb" | "gcm" | "ctr",
+  encoding: "hex" | "base64",
+  iv?: string
+) => {
+  if (mode === "ecb") return "";
+
+  return iv ? Buffer.from(iv, encoding) : crypto.randomBytes(16);
 };
 
 export const encrypt = async (
   plaintext: string,
-  params: AESParams
+  params: AESEncryptionParams
 ): Promise<{ encrypted: string; iv: string; authTag?: string }> => {
   const { key, iv, keySize, mode, outputEncoding } = params;
 
-  let ivBuffer: Buffer | undefined;
-  switch (mode) {
-    case "cbc":
-    case "gcm":
-    case "ctr":
-      ivBuffer = iv ? Buffer.from(iv, outputEncoding) : crypto.randomBytes(16);
-      break;
-    case "ecb":
-      break;
-    default:
-      throw new Error("Invalid mode");
-  }
+  const ivBuffer = retrieveIv(mode, outputEncoding, iv);
 
   const algo = `aes-${keySize}-${mode}`;
-  const cipher = crypto.createCipheriv(algo, key, ivBuffer || "");
+  const cipher = crypto.createCipheriv(algo, key, ivBuffer);
 
   let encrypted = cipher.update(plaintext, "utf8", outputEncoding);
   encrypted += cipher.final(outputEncoding);
@@ -51,35 +59,26 @@ export const encrypt = async (
 
 export const decrypt = async (
   ciphertext: string,
-  params: AESParams
+  params: AESDecryptionParams
 ): Promise<string> => {
   const { key, iv, keySize, mode, outputEncoding, authTag } = params;
 
+  const inputEncoding = detectEncoding(ciphertext);
+
+  const ivBuffer = retrieveIv(mode, inputEncoding, iv);
+
   const algo = `aes-${keySize}-${mode}`;
 
-  let ivBuffer: Buffer | undefined;
-  switch (mode) {
-    case "cbc":
-    case "gcm":
-    case "ctr":
-      ivBuffer = Buffer.from(iv, outputEncoding);
-      break;
-    case "ecb":
-      break;
-    default:
-      throw new Error("Invalid mode");
-  }
+  const decipher = crypto.createDecipheriv(algo, key, ivBuffer);
 
-  const decipher = crypto.createDecipheriv(algo, key, ivBuffer || "");
+  console.log(inputEncoding);
 
   if (mode === "gcm" && authTag) {
-    (decipher as crypto.DecipherGCM).setAuthTag(
-      Buffer.from(authTag, outputEncoding)
-    );
+    (decipher as crypto.DecipherGCM).setAuthTag(Buffer.from(authTag));
   }
 
-  let decrypted = decipher.update(ciphertext, outputEncoding, "utf8");
-  decrypted += decipher.final("utf8");
+  let decrypted = decipher.update(ciphertext, inputEncoding, outputEncoding);
+  decrypted += decipher.final(outputEncoding);
 
   return decrypted;
 };

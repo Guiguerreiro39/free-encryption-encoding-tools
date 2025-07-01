@@ -59,7 +59,7 @@ export function NumberInput({
       <button
         aria-hidden
         tabIndex={-1}
-        className="flex items-center pl-[.5em] pr-[.325em] hover:bg-secondary/80 cursor-pointer rounded-l-md"
+        className="flex items-center pl-[.5em] pr-[.325em] hover:bg-muted hover:text-muted-foreground cursor-pointer rounded-l-md"
         type="button"
         disabled={min != null && value <= min}
         onPointerDown={handlePointerDown(-1)}
@@ -98,7 +98,7 @@ export function NumberInput({
       <button
         aria-hidden
         tabIndex={-1}
-        className="flex items-center pl-[.325em] pr-[.5em] hover:bg-secondary/80 cursor-pointer rounded-r-md"
+        className="flex items-center pl-[.325em] pr-[.5em] hover:bg-muted hover:text-muted-foreground cursor-pointer rounded-r-md"
         type="button"
         disabled={max != null && value >= max}
         onPointerDown={handlePointerDown(1)}

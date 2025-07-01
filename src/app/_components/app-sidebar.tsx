@@ -39,7 +39,7 @@ export const AppSidebar = () => {
                 {category.tools.map((tool) => (
                   <SidebarMenuItem key={tool.name}>
                     <SidebarMenuButton asChild>
-                      <Link href={tool.url}>
+                      <Link href={tool.defaultUrl}>
                         <span>{tool.name}</span>
                       </Link>
                     </SidebarMenuButton>

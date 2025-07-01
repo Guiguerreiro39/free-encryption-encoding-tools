@@ -1,44 +1,41 @@
 import { Code, Lock } from "lucide-react";
 
-export const ENCRYPTION_TOOLS = ["aes", "rsa", "caesar"] as const;
-
-export const ENCODING_TOOLS = ["base64"] as const;
-
-export const AVAILABLE_TOOLS = [
-  ...ENCODING_TOOLS,
-  ...ENCRYPTION_TOOLS,
-] as const;
-
-export const AVAILABLE_CATEGORIES = ["encryption", "encoding"] as const;
-
 export const AES_TOOL = {
-  name: "AES",
+  name: "AES" as const,
   title: "AES Encryption and Decryption",
   description: "Advanced Encryption Standard with variable key size and modes",
-  url: "/aes",
+  defaultUrl: "/aes-encryption",
+  urls: ["aes-encryption", "aes-decryption"] as const,
 };
 
 export const RSA_TOOL = {
-  name: "RSA",
+  name: "RSA" as const,
   title: "RSA Encryption and Decryption",
   description:
     "Encrypt and decrypt text using RSA. Generate public and private keys or supply your own.",
-  url: "/rsa",
+  defaultUrl: "/rsa-encryption",
+  urls: ["rsa-encryption", "rsa-decryption"] as const,
 };
 
 export const CAESAR_TOOL = {
-  name: "Caesar Cipher",
+  name: "Caesar Cipher" as const,
   title: "Caesar Cipher",
   description:
     "Encrypt and decrypt text using Caesar cipher with shift operations. You can also brute force in order to receive all possible decrypted texts.",
-  url: "/caesar",
+  defaultUrl: "/caesar-encryption",
+  urls: [
+    "caesar-encryption",
+    "caesar-decryption",
+    "caesar-brute-force",
+  ] as const,
 };
 
 export const BASE64_TOOL = {
-  name: "Base64",
+  name: "Base64" as const,
   title: "Base64 Encode and Decode",
   description: "Encode or decode text using Base64",
-  url: "/base64",
+  defaultUrl: "/base64-encoding",
+  urls: ["base64-encoding", "base64-decoding"] as const,
 };
 
 export const TOOL_INFO = [
@@ -57,3 +54,11 @@ export const TOOL_INFO = [
     tools: [BASE64_TOOL],
   },
 ];
+
+export const ALL_TOOLS = [AES_TOOL, RSA_TOOL, CAESAR_TOOL, BASE64_TOOL];
+
+export type ToolUrl = (typeof ALL_TOOLS)[number]["urls"][number];
+
+export const VALID_TOOL_URLS = new Set<ToolUrl>(
+  ALL_TOOLS.flatMap((t) => [...t.urls])
+);

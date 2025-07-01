@@ -5,21 +5,14 @@ import { AESCalculator } from "./_components/aes/aes-calculator";
 import { Base64Calculator } from "./_components/base64/base64-calculator";
 import { CaesarCalculator } from "./_components/caesar/caesar-calculator";
 import { notFound } from "next/navigation";
-import { AVAILABLE_TOOLS } from "@/constants";
 import { AESLearning } from "./_components/aes/aes-learning";
 import { AdSpace } from "@/components/ad-space";
 import { RSALearning } from "./_components/rsa/rsa-learning";
 import { CaesarLearning } from "./_components/caesar/caesar-learning";
 import { Base64Learning } from "./_components/base64/base64-learning";
 import { Metadata } from "next";
-import {
-  generatePageMetadata,
-  generateStructuredData,
-  PAGE_DESCRIPTIONS,
-  PAGE_TITLES,
-  SEO_KEYWORDS,
-  SITE_CONFIG,
-} from "@/seo";
+import { TOOLS_CONFIG } from "@/seo/tools-config";
+import { ALL_TOOLS } from "@/constants";
 
 // Generate metadata for each tool page
 export async function generateMetadata({
@@ -29,16 +22,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { tool } = await params;
 
-  if (!SEO_KEYWORDS[tool as keyof typeof SEO_KEYWORDS]) return {};
+  if (!TOOLS_CONFIG[tool as keyof typeof TOOLS_CONFIG]) {
+    return {};
+  }
 
-  const keywords = SEO_KEYWORDS[tool as keyof typeof SEO_KEYWORDS];
-
-  return generatePageMetadata(
-    PAGE_TITLES[tool as keyof typeof PAGE_TITLES],
-    PAGE_DESCRIPTIONS[tool as keyof typeof PAGE_DESCRIPTIONS],
-    [...keywords],
-    `/${tool}`
-  );
+  return {
+    title: TOOLS_CONFIG[tool as keyof typeof TOOLS_CONFIG].title,
+    description: TOOLS_CONFIG[tool as keyof typeof TOOLS_CONFIG].description,
+  };
 }
 
 export default async function ToolPage({
@@ -48,66 +39,67 @@ export default async function ToolPage({
 }) {
   const { tool } = await params;
 
-  if (!AVAILABLE_TOOLS.includes(tool as (typeof AVAILABLE_TOOLS)[number])) {
-    notFound();
+  const parsedTool = ALL_TOOLS.find((t) => isToolUrl(tool, t.urls));
+
+  if (!parsedTool) {
+    return notFound();
   }
 
-  // Add structured data for each tool
-  const toolStructuredData = {
-    ...generateStructuredData(
-      PAGE_TITLES[tool as keyof typeof PAGE_TITLES],
-      PAGE_DESCRIPTIONS[tool as keyof typeof PAGE_DESCRIPTIONS],
-      `${SITE_CONFIG.url}/${tool}`
-    ),
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(toolStructuredData),
-        }}
-      />
-
+    <div className="container mx-auto space-y-8">
       {(() => {
-        switch (tool) {
-          case "aes":
+        switch (parsedTool.name) {
+          case "AES":
             return (
               <>
-                <AESCalculator />
+                <AESCalculator
+                  tool={tool as (typeof parsedTool.urls)[number]}
+                />
                 <AdSpace />
                 <AESLearning />
               </>
             );
-          case "rsa":
+          case "RSA":
             return (
               <>
-                <RSACalculator />
+                <RSACalculator
+                  tool={tool as (typeof parsedTool.urls)[number]}
+                />
                 <AdSpace />
                 <RSALearning />
               </>
             );
-          case "base64":
+          case "Base64":
             return (
               <>
-                <Base64Calculator />
+                <Base64Calculator
+                  tool={tool as (typeof parsedTool.urls)[number]}
+                />
                 <AdSpace />
                 <Base64Learning />
               </>
             );
-          case "caesar":
+          case "Caesar Cipher":
             return (
               <>
-                <CaesarCalculator />
+                <CaesarCalculator
+                  tool={tool as (typeof parsedTool.urls)[number]}
+                />
                 <AdSpace />
                 <CaesarLearning />
               </>
             );
           default:
-            return null;
+            return notFound();
         }
       })()}
-    </>
+    </div>
   );
+}
+
+function isToolUrl<T extends string>(
+  value: string,
+  urls: readonly T[]
+): value is T {
+  return urls.includes(value as T);
 }

@@ -6,36 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/api/",
-          "/_next/",
-          "/private/",
-          "/admin/",
-          "/temp/",
-          "/cache/",
-          "/*.json$",
-          "/search?*",
-          "/*?utm_*",
-          "/*?ref=*",
-          "/*?fbclid=*",
-          "/*?gclid=*",
-        ],
+        disallow: ["/privacy", "/terms"],
         crawlDelay: 1,
-      },
-      // Allow specific search engine bots full access
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/private/", "/admin/"],
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
-        disallow: ["/api/", "/private/", "/admin/"],
       },
     ],
     sitemap: "https://ciphertoolbox.com/sitemap.xml",
-    // Additional sitemaps for better indexing
-    host: "https://ciphertoolbox.com",
   };
 }

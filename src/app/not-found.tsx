@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TypographyH1 } from "@/components/ui/typography-h1";
 import { TypographyP } from "@/components/ui/typography-p";
+import { ALL_TOOLS } from "@/constants";
 
 export default function NotFound() {
   return (
@@ -25,18 +26,11 @@ export default function NotFound() {
             <Button asChild variant="outline">
               <Link href="/">Home</Link>
             </Button>
-            <Button asChild variant="outline">
-              <Link href="/aes">AES Encryption</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/rsa">RSA Tools</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/base64">Base64 Encoder</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/caesar">Caesar Cipher</Link>
-            </Button>
+            {ALL_TOOLS.map((tool) => (
+              <Button key={tool.name} asChild variant="outline">
+                <Link href={tool.defaultUrl}>{tool.name}</Link>
+              </Button>
+            ))}
           </div>
         </div>
       </div>

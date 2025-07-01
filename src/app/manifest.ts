@@ -1,5 +1,5 @@
+import { SITE_CONFIG } from "@/seo/site-config";
 import type { MetadataRoute } from "next";
-import { SITE_CONFIG } from "@/seo";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -11,11 +11,6 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#b98771",
     description: SITE_CONFIG.description.default,
     icons: [
-      {
-        src: "/favicon.ico",
-        sizes: "any",
-        type: "image/x-icon",
-      },
       {
         src: "/icon.png",
         sizes: "500x500",
