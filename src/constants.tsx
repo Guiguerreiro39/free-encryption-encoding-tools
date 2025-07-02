@@ -3,7 +3,10 @@ import { Code, Lock } from "lucide-react";
 export const AES_TOOL = {
   name: "AES" as const,
   title: "AES Encryption and Decryption",
-  description: "Advanced Encryption Standard with variable key size and modes",
+  description:
+    "Advanced Encryption Standard with variable key sizes and modes.",
+  shortDescription:
+    "AES encryption and decryption with variable key sizes and modes.",
   defaultUrl: "/aes-encryption",
   urls: ["aes-encryption", "aes-decryption"] as const,
 };
@@ -13,6 +16,8 @@ export const RSA_TOOL = {
   title: "RSA Encryption and Decryption",
   description:
     "Encrypt and decrypt text using RSA. Generate public and private keys or supply your own.",
+  shortDescription:
+    "RSA encryption and decryption with public and private keys.",
   defaultUrl: "/rsa-encryption",
   urls: ["rsa-encryption", "rsa-decryption"] as const,
 };
@@ -22,6 +27,8 @@ export const CAESAR_TOOL = {
   title: "Caesar Cipher",
   description:
     "Encrypt and decrypt text using Caesar cipher with shift operations. You can also brute force in order to receive all possible decrypted texts.",
+  shortDescription:
+    "Caesar cipher encryption and decryption with shift operations.",
   defaultUrl: "/caesar-encryption",
   urls: [
     "caesar-encryption",
@@ -34,6 +41,7 @@ export const BASE64_TOOL = {
   name: "Base64" as const,
   title: "Base64 Encode and Decode",
   description: "Encode or decode text using Base64",
+  shortDescription: "Base64 encoding and decoding.",
   defaultUrl: "/base64-encoding",
   urls: ["base64-encoding", "base64-decoding"] as const,
 };
