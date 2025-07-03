@@ -2,6 +2,7 @@ import { RSA_TOOL } from "@/constants";
 import { CalculatorLayout } from "@/components/calculator-layout";
 import { RSAEncryption } from "./rsa-encryption";
 import { RSADecryption } from "./rsa-decryption";
+import { RSALearning } from "./rsa-learning";
 
 type Props = {
   tool: (typeof RSA_TOOL.urls)[number];
@@ -27,6 +28,7 @@ export const RSACalculator = ({ tool }: Props) => {
           href: "/rsa-decryption",
         },
       ]}
+      learning={<RSALearning />}
     />
   );
 };

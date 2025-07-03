@@ -2,6 +2,7 @@ import { BASE64_TOOL } from "@/constants";
 import { CalculatorLayout } from "@/components/calculator-layout";
 import { Base64Encoding } from "./base64-encoding";
 import { Base64Decoding } from "./base64-decoding";
+import { Base64Learning } from "./base64-learning";
 
 type Props = {
   tool: (typeof BASE64_TOOL.urls)[number];
@@ -27,6 +28,7 @@ export const Base64Calculator = ({ tool }: Props) => {
           href: "/base64-decoding",
         },
       ]}
+      learning={<Base64Learning />}
     />
   );
 };

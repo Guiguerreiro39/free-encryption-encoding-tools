@@ -3,6 +3,7 @@ import { CAESAR_TOOL } from "@/constants";
 import { CaesarEncryption } from "./caesar-encryption";
 import { CaesarDecryption } from "./caesar-decryption";
 import { CaesarBruteForce } from "./caesar-brute-force";
+import { CaesarLearning } from "./caesar-learning";
 
 type Props = {
   tool: (typeof CAESAR_TOOL.urls)[number];
@@ -34,6 +35,7 @@ export const CaesarCalculator = ({ tool }: Props) => {
           href: "/caesar-brute-force",
         },
       ]}
+      learning={<CaesarLearning />}
     />
   );
 };

@@ -4,7 +4,7 @@ import { TypographyH4 } from "@/components/ui/typography-h4";
 
 export const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground py-12 shadow-md shadow-t-2">
+    <footer className="bg-primary text-primary-foreground py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
@@ -64,7 +64,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-foreground mt-12 pt-8 text-center">
+        <div className="border-t border-primary-foreground mt-12 pt-8 text-center">
           <TypographyP className="text-sm text-secondary-foreground">
             &copy; 2025 Cipher Toolbox. All rights reserved. Professional-grade
             encryption tools for secure communications.

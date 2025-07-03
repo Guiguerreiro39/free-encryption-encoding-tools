@@ -5,11 +5,6 @@ import { AESCalculator } from "./_components/aes/aes-calculator";
 import { Base64Calculator } from "./_components/base64/base64-calculator";
 import { CaesarCalculator } from "./_components/caesar/caesar-calculator";
 import { notFound } from "next/navigation";
-import { AESLearning } from "./_components/aes/aes-learning";
-import { AdSpace } from "@/components/ad-space";
-import { RSALearning } from "./_components/rsa/rsa-learning";
-import { CaesarLearning } from "./_components/caesar/caesar-learning";
-import { Base64Learning } from "./_components/base64/base64-learning";
 import { Metadata } from "next";
 import { TOOLS_CONFIG } from "@/seo/tools-config";
 import { ALL_TOOLS } from "@/constants";
@@ -45,56 +40,22 @@ export default async function ToolPage({
     return notFound();
   }
 
-  return (
-    <div className="container mx-auto space-y-8">
-      {(() => {
-        switch (parsedTool.name) {
-          case "AES":
-            return (
-              <>
-                <AESCalculator
-                  tool={tool as (typeof parsedTool.urls)[number]}
-                />
-                <AdSpace />
-                <AESLearning />
-              </>
-            );
-          case "RSA":
-            return (
-              <>
-                <RSACalculator
-                  tool={tool as (typeof parsedTool.urls)[number]}
-                />
-                <AdSpace />
-                <RSALearning />
-              </>
-            );
-          case "Base64":
-            return (
-              <>
-                <Base64Calculator
-                  tool={tool as (typeof parsedTool.urls)[number]}
-                />
-                <AdSpace />
-                <Base64Learning />
-              </>
-            );
-          case "Caesar Cipher":
-            return (
-              <>
-                <CaesarCalculator
-                  tool={tool as (typeof parsedTool.urls)[number]}
-                />
-                <AdSpace />
-                <CaesarLearning />
-              </>
-            );
-          default:
-            return notFound();
-        }
-      })()}
-    </div>
-  );
+  switch (parsedTool.name) {
+    case "AES":
+      return <AESCalculator tool={tool as (typeof parsedTool.urls)[number]} />;
+    case "RSA":
+      return <RSACalculator tool={tool as (typeof parsedTool.urls)[number]} />;
+    case "Base64":
+      return (
+        <Base64Calculator tool={tool as (typeof parsedTool.urls)[number]} />
+      );
+    case "Caesar Cipher":
+      return (
+        <CaesarCalculator tool={tool as (typeof parsedTool.urls)[number]} />
+      );
+    default:
+      return notFound();
+  }
 }
 
 function isToolUrl<T extends string>(
