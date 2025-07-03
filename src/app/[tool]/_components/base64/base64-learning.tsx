@@ -24,7 +24,7 @@ export const Base64Learning = () => {
             <TypographyH3>Key Features of Base64</TypographyH3>
 
             <div className="flex flex-wrap justify-center gap-8">
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Not Encryption
@@ -35,7 +35,7 @@ export const Base64Learning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">Alphabet</TypographyH4>
                   <TypographyP className="text-sm">
@@ -43,7 +43,7 @@ export const Base64Learning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">Padding</TypographyH4>
                   <TypographyP className="text-sm">
@@ -52,7 +52,7 @@ export const Base64Learning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">Readable</TypographyH4>
                   <TypographyP className="text-sm">
@@ -67,7 +67,7 @@ export const Base64Learning = () => {
             <TypographyH3>Common Use Cases</TypographyH3>
 
             <div className="flex flex-wrap justify-center gap-8">
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Embedding Binary Files
@@ -77,7 +77,7 @@ export const Base64Learning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     HTML/CSS Data
@@ -87,7 +87,7 @@ export const Base64Learning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Email Attachments
@@ -97,7 +97,7 @@ export const Base64Learning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Simple Obfuscation

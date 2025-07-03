@@ -47,7 +47,7 @@ export default function AboutPage() {
         <article className="text-center">
           <section className="prose bg-background py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-12">
                 {ABOUT_INFO.map((item) => (
                   <div key={item.title} className="space-y-10">
                     <div className="space-y-4">
@@ -65,7 +65,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <section className="prose bg-gradient-to-b from-background to-primary/20 py-20">
+          <section className="prose bg-gradient-to-b from-background to-accent py-20">
             <div className="space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="space-y-8">
                 <TypographyH2>Meet our Founder</TypographyH2>

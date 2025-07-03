@@ -25,7 +25,7 @@ export default function EncryptionSecurityFAQ() {
       />
       <main className="space-y-8">
         <AdSpace />
-        <article className="text-center prose bg-gradient-to-b from-background via-background to-primary/20 py-20">
+        <article className="text-center prose bg-gradient-to-b from-background via-background to-accent py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
             <Accordion type="multiple" className="space-y-20">
               <section className="space-y-8">

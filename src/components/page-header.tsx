@@ -18,7 +18,7 @@ type Props = {
 
 export const PageHeader = ({ title, description, action, badges }: Props) => {
   return (
-    <header className="bg-gradient-to-b from-primary/20 to-background py-8">
+    <header className="bg-gradient-to-b from-accent to-background py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <motion.h1
           className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 leading-18"

@@ -22,7 +22,7 @@ export const RSALearning = () => {
           <section className="space-y-8">
             <TypographyH3>Key Features of RSA</TypographyH3>
             <div className="flex flex-wrap justify-center gap-8">
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Asymmetric Encryption
@@ -32,7 +32,7 @@ export const RSALearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Based on Number Theory
@@ -42,7 +42,7 @@ export const RSALearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Key Lengths
@@ -52,7 +52,7 @@ export const RSALearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">Slower</TypographyH4>
                   <TypographyP className="text-sm">
@@ -66,7 +66,7 @@ export const RSALearning = () => {
           <section className="space-y-8">
             <TypographyH3>Common Uses</TypographyH3>
             <div className="flex flex-wrap justify-center gap-8">
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Secure Key Exchange
@@ -76,7 +76,7 @@ export const RSALearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Digital Signatures
@@ -86,7 +86,7 @@ export const RSALearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     SSL/TLS (HTTPS)
@@ -96,7 +96,7 @@ export const RSALearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Email Encryption

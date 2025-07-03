@@ -59,7 +59,7 @@ export default function HomePage() {
       <main className="space-y-8">
         <AdSpace />
         <article className="text-center">
-          <section className="prose bg-gradient-to-b from-background via-background to-primary/20 py-20">
+          <section className="prose bg-gradient-to-b from-background via-background to-accent py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
               <div className="space-y-4">
                 <TypographyH2>
@@ -86,11 +86,11 @@ export default function HomePage() {
                     </div>
                     <TypographyP>{category.description}</TypographyP>
                   </div>
-                  <div className="grid md:grid-cols-3 gap-8 mx-auto place-items-center">
+                  <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mx-auto place-items-center">
                     {category.tools.map((tool) => (
                       <Card
                         key={tool.name}
-                        className="cipher-card group hover:scale-105 transition-all duration-300 text-start"
+                        className="group hover:scale-105 transition-all duration-300 text-start w-full"
                         style={{ animationDelay: "0.1s" }}
                       >
                         <CardHeader>
@@ -121,13 +121,13 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="prose space-y-12 bg-gradient-to-b from-primary/20 to-background py-20">
+          <section className="prose space-y-12 bg-gradient-to-b from-accent to-background py-20">
             <div className="space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <TypographyH2>
                 Why Choose Our Online Encryption and Encoding Tools?
               </TypographyH2>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 gap-12">
                 <div className="text-center group">
                   <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                     <Shield className="w-8 h-8 text-primary-foreground" />
@@ -224,7 +224,7 @@ export default function HomePage() {
                 ].map((useCase, index) => (
                   <Card
                     key={index}
-                    className="text-center hover:scale-105 transition-all duration-300 col-span-2 [&:nth-last-child(-n+2)]:col-span-3 [&:nth-last-child(2)]:justify-self-end [&:nth-last-child(1)]:justify-self-start max-w-sm"
+                    className="text-center hover:scale-105 transition-all justify-self-center duration-300 lg:col-span-2 col-span-1 md:[&:nth-last-child(1)]:col-span-2 md:[&:nth-last-child(1)]:justify-self-center lg:[&:nth-last-child(-n+2)]:col-span-3 lg:[&:nth-last-child(2)]:justify-self-end lg:[&:nth-last-child(1)]:justify-self-start md:max-w-sm md:w-auto"
                   >
                     <CardContent className="py-6">
                       <div className="mb-4 flex justify-center">

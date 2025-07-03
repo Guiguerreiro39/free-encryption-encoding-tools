@@ -23,7 +23,7 @@ export const CaesarLearning = () => {
           <section className="space-y-8">
             <TypographyH3>Key Features</TypographyH3>
             <div className="flex flex-wrap justify-center gap-8">
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Substitution Cipher
@@ -33,7 +33,7 @@ export const CaesarLearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Symmetric
@@ -44,7 +44,7 @@ export const CaesarLearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Alphabet-Based
@@ -54,7 +54,7 @@ export const CaesarLearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Historical Importance
@@ -70,7 +70,7 @@ export const CaesarLearning = () => {
           <section className="space-y-8">
             <TypographyH3>Common Uses</TypographyH3>
             <div className="flex flex-wrap justify-center gap-8">
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Teaching Cryptography
@@ -80,7 +80,7 @@ export const CaesarLearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Simple Puzzles
@@ -90,7 +90,7 @@ export const CaesarLearning = () => {
                   </TypographyP>
                 </CardContent>
               </Card>
-              <Card className="text-center max-w-2xs">
+              <Card className="text-center md:max-w-2xs sm:max-w-3xs w-full sm:w-auto">
                 <CardContent>
                   <TypographyH4 className="text-lg mb-3">
                     Basic Encoding
@@ -148,7 +148,7 @@ export const CaesarLearning = () => {
                 <CardContent>
                   <ul className="text-start max-w-sm list-disc list-inside text-lg text-muted-foreground space-y-2 justify-self-center grid grid-cols-1">
                     <li className="w-fit">
-                      Very insecure - only 25 possible shifts
+                      Very insecure (only 25 possible shifts)
                     </li>
                     <li className="w-fit">
                       Vulnerable to brute-force and frequency analysis attacks

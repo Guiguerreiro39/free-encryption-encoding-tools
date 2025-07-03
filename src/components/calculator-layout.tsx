@@ -27,8 +27,8 @@ export const CalculatorLayout = <T extends string>({
   return (
     <>
       <PageHeader title={title} description={description} />
-      <main className="bg-gradient-to-b from-background via-background via-80% to-primary/20">
-        <div className="max-w-7xl mx-auto space-y-8">
+      <main className="bg-gradient-to-b from-background via-background via-80% to-accent">
+        <div className="max-w-7xl mx-auto space-y-8 px-4 sm:px-6 lg:px-8">
           <AdSpace />
           <Card>
             <Tabs defaultValue={tool}>
