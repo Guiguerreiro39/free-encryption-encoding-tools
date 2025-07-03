@@ -5,31 +5,30 @@ export const AES_TOOL = {
   title: "AES Encryption and Decryption",
   description:
     "Advanced Encryption Standard with variable key sizes and modes.",
-  shortDescription:
-    "AES encryption and decryption with variable key sizes and modes.",
+  shortDescription: "Advanced Encryption Standard",
   defaultUrl: "/aes-encryption",
+  actionLabel: "Encrypt with AES",
   urls: ["aes-encryption", "aes-decryption"] as const,
 };
 
 export const RSA_TOOL = {
   name: "RSA" as const,
   title: "RSA Encryption and Decryption",
+  shortDescription: "Public Key Cryptography",
   description:
-    "Encrypt and decrypt text using RSA. Generate public and private keys or supply your own.",
-  shortDescription:
-    "RSA encryption and decryption with public and private keys.",
+    "RSA encryption and decryption with public and private keys generation.",
   defaultUrl: "/rsa-encryption",
+  actionLabel: "Encrypt with RSA",
   urls: ["rsa-encryption", "rsa-decryption"] as const,
 };
 
 export const CAESAR_TOOL = {
   name: "Caesar Cipher" as const,
   title: "Caesar Cipher",
-  description:
-    "Encrypt and decrypt text using Caesar cipher with shift operations. You can also brute force in order to receive all possible decrypted texts.",
-  shortDescription:
-    "Caesar cipher encryption and decryption with shift operations.",
+  description: "Caesar cipher encryption and decryption with shift operations.",
+  shortDescription: "Classical Shift Cipher",
   defaultUrl: "/caesar-encryption",
+  actionLabel: "Encrypt with Caesar Cipher",
   urls: [
     "caesar-encryption",
     "caesar-decryption",
@@ -40,9 +39,11 @@ export const CAESAR_TOOL = {
 export const BASE64_TOOL = {
   name: "Base64" as const,
   title: "Base64 Encode and Decode",
-  description: "Encode or decode text using Base64",
-  shortDescription: "Base64 encoding and decoding.",
+  description:
+    "Encode or decode text using Base64 for safe transmission and storage.",
+  shortDescription: "Text to Base64 Encoding",
   defaultUrl: "/base64-encoding",
+  actionLabel: "Encode with Base64",
   urls: ["base64-encoding", "base64-decoding"] as const,
 };
 

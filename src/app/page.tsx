@@ -2,226 +2,249 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { TOOL_INFO } from "@/constants";
+import { ALL_TOOLS, TOOL_INFO } from "@/constants";
 import Link from "next/link";
 import { TypographyH2 } from "@/components/ui/typography-h2";
 import { TypographyP } from "@/components/ui/typography-p";
+import { PageHeader } from "@/components/page-header";
+import { TextScramble } from "@/components/ui/text-scramble";
+import {
+  Book,
+  Code,
+  GlobeLock,
+  LaptopMinimal,
+  MessageCircleMore,
+  Shield,
+  UserCheck,
+  UserLock,
+  Wrench,
+  Zap,
+} from "lucide-react";
+import { AdSpace } from "@/components/ad-space";
+import { TypographyH3 } from "@/components/ui/typography-h3";
+import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
   return (
-    <article className="space-y-12 container mx-auto text-center">
-      <section className="prose prose-slate dark:prose-invert max-w-none space-y-4">
-        <TypographyH2>
-          Free Online Text Encryption & Decoding Tools
-        </TypographyH2>
-        <TypographyP>
-          Welcome to Cipher Toolbox, your comprehensive suite of free online
-          text encryption, decryption, hashing, encoding and decoding tools. Our
-          browser-based tools provide instant, secure results. operations are
-          performed locally in your browser, ensuring your data never leaves
-          your device. No registration, no downloads, no data collection - just
-          professional-grade cryptographic tools at your fingertips.
-        </TypographyP>
-      </section>
-      {TOOL_INFO.map((category) => (
-        <section key={category.title} className="space-y-6">
-          <div className="space-y-2 prose prose-slate dark:prose-invert max-w-none">
-            <TypographyH2>
-              <div className="flex justify-center items-center gap-2">
-                {category.icon}
-                {category.title}
+    <>
+      <PageHeader
+        title={
+          <>
+            Free Online
+            <TextScramble className="block text-primary" as="span" duration={1}>
+              Encryption & Encoding
+            </TextScramble>
+            <span className="block">Tools</span>
+          </>
+        }
+        description={
+          <>
+            Professional-grade online encryption, encoding and hashing tools.
+            <span className="block mt-2 font-medium">
+              No download or registration required • Secure, simple and fast
+            </span>
+          </>
+        }
+        action={{
+          label: "View Tools",
+          href: "/tools",
+          icon: <Wrench />,
+        }}
+        badges={ALL_TOOLS.map((tool) => tool.name)}
+      />
+      <main className="space-y-8">
+        <AdSpace />
+        <article className="text-center">
+          <section className="prose bg-gradient-to-b from-background via-background to-primary/20 py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+              <div className="space-y-4">
+                <TypographyH2>
+                  Free Online Text Encryption & Decoding Tools
+                </TypographyH2>
+                <TypographyP className="text-lg">
+                  Welcome to Cipher Toolbox, your comprehensive suite of free
+                  online text encryption, decryption, hashing, encoding and
+                  decoding tools. Our browser-based tools provide instant,
+                  secure results.
+                  <span className="block mt-6 font-semibold">
+                    No registration, no downloads, no data collection.
+                  </span>
+                </TypographyP>
               </div>
-            </TypographyH2>
-            <TypographyP>{category.description}</TypographyP>
-          </div>
+              {TOOL_INFO.map((category) => (
+                <div key={category.title} className="space-y-10">
+                  <div className="space-y-4">
+                    <div className="flex justify-center items-center gap-4">
+                      <div className="rounded-md p-3 bg-primary text-primary-foreground">
+                        {category.icon}
+                      </div>
+                      <TypographyH3>{category.title}</TypographyH3>
+                    </div>
+                    <TypographyP>{category.description}</TypographyP>
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-8 mx-auto place-items-center">
+                    {category.tools.map((tool) => (
+                      <Card
+                        key={tool.name}
+                        className="cipher-card group hover:scale-105 transition-all duration-300 text-start"
+                        style={{ animationDelay: "0.1s" }}
+                      >
+                        <CardHeader>
+                          <CardTitle className="text-xl font-bold">
+                            {tool.name}
+                          </CardTitle>
+                          <CardDescription className="text-foreground">
+                            {tool.shortDescription}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-muted-foreground mb-4">
+                            {tool.description}
+                          </p>
+                        </CardContent>
+                        <CardFooter className="flex-1 flex items-end">
+                          <Button className="w-full" variant="default">
+                            <Link href={tool.defaultUrl}>
+                              {tool.actionLabel}
+                            </Link>
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {category.tools.map((tool) => (
-              <Link
-                href={tool.defaultUrl}
-                key={tool.name}
-                className="sm:w-[20rem] w-[12rem] transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
-                aria-label={`Go to ${tool.name} tool: ${tool.description}`}
-              >
-                <Card className="h-full text-left hover:bg-accent/50 transition-colors">
-                  <CardHeader>
-                    <CardTitle>{tool.name}</CardTitle>
-                    <CardDescription>{tool.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ))}
+          <section className="prose space-y-12 bg-gradient-to-b from-primary/20 to-background py-20">
+            <div className="space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <TypographyH2>
+                Why Choose Our Online Encryption and Encoding Tools?
+              </TypographyH2>
 
-      <section className="prose prose-slate dark:prose-invert max-w-none space-y-12">
-        <div className="space-y-4">
-          <TypographyH2>Why Choose Our Online Encryption Tools?</TypographyH2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="text-center group">
+                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                    <Shield className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  <TypographyH3 className="text-xl mb-3">
+                    Military-Grade Security
+                  </TypographyH3>
+                  <TypographyP>
+                    Our AES encryption uses the same standard trusted by
+                    governments and military organizations worldwide.
+                  </TypographyP>
+                </div>
+                <div className="text-center group">
+                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                    <GlobeLock className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  <TypographyH3 className="text-xl mb-3">
+                    Data Privacy
+                  </TypographyH3>
+                  <TypographyP>
+                    We never store your data. All information used in our tools
+                    will be deleted after the operation is completed.
+                  </TypographyP>
+                </div>
 
-          <div className="grid md:grid-cols-2 gap-6 not-prose">
-            <Card>
-              <CardHeader>
-                <CardTitle>Military-Grade Security</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <TypographyP>
-                  Our AES encryption tool uses the same encryption standard
-                  trusted by governments and military organizations worldwide.
-                  RSA encryption provides secure public-key cryptography for
-                  sensitive communications.
+                <div className="text-center group">
+                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                    <Zap className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  <TypographyH3 className="text-xl mb-3">
+                    Instant Results
+                  </TypographyH3>
+                  <TypographyP>
+                    No waiting, no processing delays. Get instant results for
+                    all your cryptographic operations
+                  </TypographyP>
+                </div>
+
+                <div className="text-center group">
+                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                    <UserCheck className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  <TypographyH3 className="text-xl mb-3">
+                    Completely Free
+                  </TypographyH3>
+                  <TypographyP>
+                    No registration required, no hidden fees, no usage limits.
+                    Professional-grade tools available 24/7.
+                  </TypographyP>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="prose space-y-12 bg-background py-20">
+            <div className="space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="space-y-4">
+                <TypographyH2>
+                  Popular Use Cases for Online Encryption
+                </TypographyH2>
+                <TypographyP className="text-lg">
+                  Our online encryption and encoding tools serve a wide range of
+                  security and development needs
                 </TypographyP>
-              </CardContent>
-            </Card>
+              </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Browser-Based Privacy</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <TypographyP>
-                  All encryption, decryption, encoding and decoding happens
-                  locally in your browser. Your sensitive data never touches our
-                  servers, ensuring complete privacy and security.
-                </TypographyP>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Instant Results</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <TypographyP>
-                  No waiting, no processing delays. Encrypt text, decode Base64,
-                  solve Caesar ciphers and generate RSA keys instantly. Perfect
-                  for developers, security professionals, and anyone needing
-                  quick cryptographic operations.
-                </TypographyP>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Completely Free</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <TypographyP>
-                  No registration required, no hidden fees, no usage limits.
-                  Professional-grade encryption and encoding tools available
-                  24/7 at no cost.
-                </TypographyP>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <TypographyH2>
-              Popular Use Cases for Online Text Encryption
-            </TypographyH2>
-            <TypographyP>
-              Our online encryption and encoding tools serve a wide range of
-              security and development needs:
-            </TypographyP>
-          </div>
-
-          <Card className="not-prose text-start max-w-3xl mx-auto">
-            <CardContent>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <strong>Secure Message Encryption:</strong> Protect sensitive
-                  communications with AES or RSA encryption
-                </li>
-                <li>
-                  <strong>Password Protection:</strong> Encrypt passwords and
-                  sensitive credentials before storage
-                </li>
-                <li>
-                  <strong>Data Encoding:</strong> Convert text to Base64 for
-                  safe transmission and storage
-                </li>
-                <li>
-                  <strong>Caesar Cipher Solving:</strong> Decode classical
-                  ciphers for educational and puzzle-solving purposes
-                </li>
-                <li>
-                  <strong>Developer Tools:</strong> Quick encoding/decoding for
-                  web development and API testing
-                </li>
-                <li>
-                  <strong>Educational Cryptography:</strong> Learn encryption
-                  concepts with hands-on tools
-                </li>
-                <li>
-                  <strong>Secure File Preparation:</strong> Encrypt text before
-                  uploading to cloud services
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="space-y-2">
-          <div className="space-y-2">
-            <TypographyH2>
-              Supported Encryption Algorithms & Encoding Methods
-            </TypographyH2>
-            <TypographyP>
-              CipherToolbox supports the most popular and secure encryption
-              algorithms and encoding methods used in modern cryptography:
-            </TypographyP>
-          </div>
-
-          <div className="flex flex-wrap gap-6 justify-center text-start">
-            <Card className="w-[20rem]">
-              <CardHeader>
-                <CardTitle>Encryption Algorithms</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm">
-                <ul className="space-y-1">
-                  <li>• AES (Advanced Encryption Standard)</li>
-                  <li>• RSA (Rivest-Shamir-Adleman)</li>
-                  <li>• Caesar Cipher (Shift Cipher)</li>
-                  <li>• Symmetric & Asymmetric Encryption</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="w-[20rem]">
-              <CardHeader>
-                <CardTitle>Encoding Methods</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm">
-                <ul className="space-y-1">
-                  <li>• Base64 Encoding/Decoding</li>
-                  <li>• URL Encoding</li>
-                  <li>• Hexadecimal Conversion</li>
-                  <li>• UTF-8 Text Processing</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <TypographyH2>
-            How to Use Our Free Online Encryption Tools
-          </TypographyH2>
-          <TypographyP>
-            Getting started with text encryption and decoding is simple. Each
-            tool is designed for ease of use while maintaining
-            professional-grade security standards. Simply select your desired
-            encryption method, enter your text, and get instant results. For
-            advanced users, custom keys and initialization vectors are supported
-            for maximum security control.
-          </TypographyP>
-        </div>
-      </section>
-    </article>
+              <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-6">
+                {[
+                  {
+                    title: "Secure Message Encryption",
+                    desc: "Protect sensitive communications with AES or RSA encryption",
+                    icon: <MessageCircleMore className="size-8" />,
+                  },
+                  {
+                    title: "Password Protection",
+                    desc: "Encrypt passwords and sensitive credentials before storage",
+                    icon: <UserLock className="size-8" />,
+                  },
+                  {
+                    title: "Data Encoding",
+                    desc: "Encode text for safe transmission and storage",
+                    icon: <Code className="size-8" />,
+                  },
+                  {
+                    title: "Developer Tools",
+                    desc: "Quick encoding and decoding for web development and API testing",
+                    icon: <LaptopMinimal className="size-8" />,
+                  },
+                  {
+                    title: "Educational Cryptography",
+                    desc: "Learn encryption concepts with hands-on tools",
+                    icon: <Book className="size-8" />,
+                  },
+                ].map((useCase, index) => (
+                  <Card
+                    key={index}
+                    className="text-center hover:scale-105 transition-all duration-300 col-span-2 [&:nth-last-child(-n+2)]:col-span-3 [&:nth-last-child(2)]:justify-self-end [&:nth-last-child(1)]:justify-self-start max-w-sm"
+                  >
+                    <CardContent className="py-6">
+                      <div className="mb-4 flex justify-center">
+                        {useCase.icon}
+                      </div>
+                      <TypographyH3 className="text-lg mb-2">
+                        {useCase.title}
+                      </TypographyH3>
+                      <TypographyP className="text-sm">
+                        {useCase.desc}
+                      </TypographyP>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+        </article>
+        <AdSpace />
+      </main>
+    </>
   );
 }

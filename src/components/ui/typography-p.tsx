@@ -1,6 +1,18 @@
-export function TypographyP({ children }: { children: React.ReactNode }) {
+import { cn } from "@/lib/utils";
+
+export function TypographyP({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"p">) {
   return (
-    <p className="leading-7 text-muted-foreground max-w-4xl mx-auto">
+    <p
+      className={cn(
+        "leading-relaxed text-muted-foreground max-w-3xl mx-auto",
+        className
+      )}
+      {...props}
+    >
       {children}
     </p>
   );

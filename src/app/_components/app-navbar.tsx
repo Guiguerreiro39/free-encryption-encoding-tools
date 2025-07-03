@@ -62,7 +62,7 @@ export const AppNavbar = () => {
                         href={tool.defaultUrl}
                         title={tool.name}
                       >
-                        {tool.shortDescription}
+                        {tool.description}
                       </ListItem>
                     ))}
                   </ul>

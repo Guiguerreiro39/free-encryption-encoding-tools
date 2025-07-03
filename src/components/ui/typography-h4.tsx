@@ -1,3 +1,16 @@
-export function TypographyH4({ children }: { children: React.ReactNode }) {
-  return <h4 className="text-xl font-semibold tracking-tight">{children}</h4>;
+import { cn } from "@/lib/utils";
+
+export function TypographyH4({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"h4">) {
+  return (
+    <h4
+      className={cn("text-2xl font-semibold tracking-tight", className)}
+      {...props}
+    >
+      {children}
+    </h4>
+  );
 }

@@ -1,3 +1,16 @@
-export function TypographyH2({ children }: { children: React.ReactNode }) {
-  return <h2 className="text-3xl font-semibold tracking-tight">{children}</h2>;
+import { cn } from "@/lib/utils";
+
+export function TypographyH2({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"h2">) {
+  return (
+    <h2
+      className={cn("text-4xl font-semibold tracking-tight", className)}
+      {...props}
+    >
+      {children}
+    </h2>
+  );
 }
